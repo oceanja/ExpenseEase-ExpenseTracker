@@ -1,0 +1,35 @@
+.button {
+  background-color: var(--theme);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: white 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: darken(var(--theme), 10%);
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 100%; /* Full width on smaller screens */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    padding: 0.7rem; /* Increased padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    font-size: 0.85rem; /* Even smaller font size */
+    padding: 0.6rem; /* Adjust padding */
+  }
+}

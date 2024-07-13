@@ -1,0 +1,22 @@
+.my-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto;
+  flex-wrap: wrap;
+}
+
+.my-card {
+  box-shadow: var(--shadow);
+  margin: 1rem;
+  border-radius: 0.5rem;
+  flex: 1;
+  flex-basis: calc(33.3333% - 2rem);
+  font-family: "Montserrat", sans-serif !important;
+}
+
+@media (max-width: 768px) {
+  .my-card {
+    flex-basis: calc(100% - 2rem); /* Full width for mobile */
+  }
+}
