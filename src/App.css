@@ -23,15 +23,3 @@
     justify-content: space-around;
   }
 }
-
-@media (max-width: 480px) { /* For small screens */
-  .charts-wrapper {
-    margin: 1rem; /* Reduce margin on smaller screens */
-    gap: 1rem; /* Reduce gap between charts */
-  }
-
-  .chart-box {
-    height: 300px; /* Adjust height for smaller screens */
-    max-width: 100%; /* Ensure full width */
-  }
-}
