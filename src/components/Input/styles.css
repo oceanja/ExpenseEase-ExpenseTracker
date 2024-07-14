@@ -1,7 +1,7 @@
 .label-input {
     text-transform: capitalize;
     margin-bottom: 0.5rem;
-    font-size: 0.9rem; /* Slightly increased for better readability */
+    font-size: 0.9rem; 
 }
 
 .custom-input {
@@ -9,7 +9,7 @@
     border-bottom-width: 1px;
     width: 100%;
     padding: 0.5rem 0;
-    font-size: 0.9rem; /* Adjusted font size */
+    font-size: 0.9rem; 
     opacity: 0.8;
     transition: border-color 0.2s;
 }
@@ -17,7 +17,7 @@
 .custom-input:focus {
     outline: none;
     opacity: 1;
-    border-bottom: 1px solid var(--theme); /* Highlight border on focus */
+    border-bottom: 1px solid var(--theme); 
     transition: all 0.2s;
 }
 
@@ -27,20 +27,20 @@
 
 @media (max-width: 768px) {
     .label-input {
-        font-size: 0.85rem; /* Smaller label font size on mobile */
+        font-size: 0.85rem; 
     }
 
     .custom-input {
-        font-size: 0.85rem; /* Smaller input font size */
+        font-size: 0.85rem; 
     }
 }
 
 @media (max-width: 480px) {
     .label-input {
-        font-size: 0.75rem; /* Further reduced label font size */
+        font-size: 0.75rem; 
     }
 
     .custom-input {
-        font-size: 0.75rem; /* Further reduced input font size */
+        font-size: 0.75rem;
     }
 }

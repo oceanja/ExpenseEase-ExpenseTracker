@@ -17,6 +17,6 @@
 
 @media (max-width: 768px) {
   .my-card {
-    flex-basis: calc(100% - 2rem); /* Full width for mobile */
+    flex-basis: calc(100% - 2rem); 
   }
 }

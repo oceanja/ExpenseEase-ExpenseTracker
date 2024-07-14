@@ -21,15 +21,15 @@
 
 @media (max-width: 768px) {
   .button {
-    width: 100%; /* Full width on smaller screens */
-    font-size: 0.9rem; /* Slightly smaller font size */
-    padding: 0.7rem; /* Increased padding */
+    width: 100%; 
+    font-size: 0.9rem; 
+    padding: 0.7rem; 
   }
 }
 
 @media (max-width: 480px) {
   .button {
-    font-size: 0.85rem; /* Even smaller font size */
-    padding: 0.6rem; /* Adjust padding */
+    font-size: 0.85rem;
+    padding: 0.6rem; 
   }
 }

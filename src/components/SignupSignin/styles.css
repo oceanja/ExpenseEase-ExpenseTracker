@@ -2,30 +2,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Center vertically */
-    padding: 20px; /* Optional padding */
+    height: 100vh; 
+    padding: 20px; 
 }
 
 .signup-wrapper {
-    width: 100%; /* Full width for responsiveness */
+    width: 100%; 
     max-width: 400px;
     box-shadow: var(--shadow);
     border-radius: 1rem;
     padding: 2rem 1.5rem;
-    background: white; /* Background color */
-    border: 1px solid #e0e0e0; /* Light border */
-    transition: transform 0.2s; /* Smooth transition */
+    background: white; 
+    border: 1px solid #e0e0e0; 
+    transition: transform 0.2s; /
 }
 
 .signup-wrapper:hover {
-    transform: scale(1.02); /* Slight zoom on hover */
+    transform: scale(1.02); 
 }
 
 .title {
     font-weight: 600;
     font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 1rem; /* Spacing below title */
+    margin-bottom: 1rem; 
 }
 
 .p-login {
@@ -34,20 +34,16 @@
     margin-top: 8px;
     font-weight: 300;
     font-size: 0.9rem;
-    color: #555; /* Slightly darker text */
+    color: #555; 
 }
 
-/* Button styles */
-button {
-    width: 100%; /* Full width for buttons */
-    margin-top: 20px; /* Spacing between buttons */
-}
+
 .btn{
     margin-top: 15px;
 }
 
 @media (max-width: 768px) {
     .signup-wrapper {
-        width: 90%; /* More width on smaller screens */
+        width: 90%; 
     }
 }
