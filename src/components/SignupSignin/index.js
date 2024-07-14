@@ -234,7 +234,7 @@ function SignupSignInComponent() {
               setState={setConfirmPassword}
               placeholder={"example123"}
             />
-            <Button
+            <Button className="btn"
               disabled={loading}
               type="button"
               text={loading ? "Loading..." : "Signup using Email and Password"}
