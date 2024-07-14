@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --theme: #0E6BA8;
   --black: #000;
@@ -8,20 +9,20 @@
 
 body {
   margin: 0;
-  font-family: "Montserrat, sans-serif";
+  font-family: "Montserrat", sans-serif;
   overflow-x: hidden; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 input {
-  font-family: "Montserrat, sans-serif";
+  font-family: "Montserrat", sans-serif;
 }
 
 .custom-input {
-  border: 0px;
+  border: 0;
   border-bottom: 1px solid #000;
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 0;
   width: 100%;
   border-radius: 0;
   margin-top: -1rem !important;
@@ -45,7 +46,7 @@ input {
   width: 100%;
   box-shadow: var(--shadow);
   border-radius: 0.5rem;
-  padding: 0rem 0.5rem;
+  padding: 0 0.5rem;
 }
 
 .input-flex input {
@@ -59,8 +60,8 @@ input {
 }
 
 .select-input {
-  width: 30%;
-  margin-right: 10px;
+  width: 100%; /* Full width on small screens */
+  margin-right: 0; /* No margin on small screens */
   display: flex;
   align-items: center;
   box-shadow: var(--shadow);
@@ -69,7 +70,7 @@ input {
 }
 
 .select-input > div {
-  border: 0px solid #fff !important;
+  border: 0 solid #fff !important;
 }
 
 .search-icon {
@@ -80,4 +81,15 @@ input {
 .search-input {
   flex-grow: 1;
   padding-left: 8px;
+}
+
+@media (max-width: 480px) { /* For small screens */
+  .input-flex {
+    flex-direction: column; /* Stack elements vertically */
+  }
+
+  .select-input {
+    width: 100%; /* Full width */
+    margin-bottom: 1rem; /* Space below */
+  }
 }
