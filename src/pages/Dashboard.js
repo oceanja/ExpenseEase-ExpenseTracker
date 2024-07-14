@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Cards from "../components/Cards";
-import { useState } from "react";
 import AddExpenseModal from "../components/Modals/addExpense";
 import AddIncomeModal from "../components/Modals/addIncome";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { toast } from "react-toastify";
-import moment from "moment";
 import TransactionsTable from "../components/TransactionsTable";
 import ChartComponent from "../components/Charts";
 import NoTransactions from "../components/NoTransactions";
@@ -23,21 +21,10 @@ function Dashboard() {
   const [expense, setExpense] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
 
-  const showExpenseModal = () => {
-    setIsExpenseModalVisible(true);
-  };
-
-  const showIncomeModal = () => {
-    setIsIncomeModalVisible(true);
-  };
-
-  const exitExpenseModal = () => {
-    setIsExpenseModalVisible(false);
-  };
-
-  const exitIncomeModal = () => {
-    setIsIncomeModalVisible(false);
-  };
+  const showExpenseModal = () => setIsExpenseModalVisible(true);
+  const showIncomeModal = () => setIsIncomeModalVisible(true);
+  const exitExpenseModal = () => setIsExpenseModalVisible(false);
+  const exitIncomeModal = () => setIsIncomeModalVisible(false);
 
   const onFinish = (values, type) => {
     const newTransaction = {
@@ -50,7 +37,7 @@ function Dashboard() {
     addTransaction(newTransaction);
   };
 
-  async function addTransaction(transaction,many) {
+  async function addTransaction(transaction, many) {
     if (!user) {
       toast.error("User not authenticated");
       return;
@@ -58,17 +45,13 @@ function Dashboard() {
 
     try {
       const transactionsRef = collection(db, `users/${user.uid}/transactions`);
-
-      const docRef = await addDoc(transactionsRef, transaction);
-
-      if(!many) toast.success("Transaction Added!");
-      let newArr=transactions;
-      newArr.push(transaction);
-      setTransactions(newArr);
+      await addDoc(transactionsRef, transaction);
+      if (!many) toast.success("Transaction Added!");
+      setTransactions((prev) => [...prev, transaction]);
       calculateBalance();
     } catch (e) {
       console.log("Error adding document:", e);
-     if(!many) toast.error("Couldn't add transaction");
+      if (!many) toast.error("Couldn't add transaction");
     }
   }
 
@@ -102,21 +85,17 @@ function Dashboard() {
     if (user) {
       const q = query(collection(db, `users/${user.uid}/transactions`));
       const querySnapshot = await getDocs(q);
-      let transactionsArray = [];
-
-      querySnapshot.forEach((doc) => {
-        transactionsArray.push(doc.data());
-      });
+      const transactionsArray = querySnapshot.docs.map(doc => doc.data());
       setTransactions(transactionsArray);
       toast.success("Transaction Fetched!");
     }
     setLoading(false);
   }
 
-  let sortedTransactions=transactions.sort((a, b) => {
-      return new Date(a.date) - new Date(b.date);
-  }
-);
+  const sortedTransactions = transactions.sort((a, b) => 
+    new Date(a.date) - new Date(b.date)
+  );
+
   return (
     <div>
       <Header />
@@ -136,14 +115,17 @@ function Dashboard() {
             exitExpenseModal={exitExpenseModal}
             onFinish={onFinish}
           />
-         {transactions.length!==0?<ChartComponent sortedTransactions={sortedTransactions}/>:<NoTransactions/>} 
-
+          {transactions.length !== 0 ? (
+            <ChartComponent sortedTransactions={sortedTransactions} />
+          ) : (
+            <NoTransactions />
+          )}
           <AddIncomeModal
             isIncomeModalVisible={isIncomeModalVisible}
             exitIncomeModal={exitIncomeModal}
             onFinish={onFinish}
           />
-          <TransactionsTable transactions={transactions} addTransaction={addTransaction}/>
+          <TransactionsTable transactions={transactions} addTransaction={addTransaction} />
         </>
       )}
     </div>
